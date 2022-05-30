@@ -1,0 +1,47 @@
+[
+    {
+        "id": "62940874c70d9e547526422f",
+        "nome": "Flores",
+        "sobrenome": "Noel",
+        "email": "floresnoel@flum.com",
+        "idade": 26,
+        "ativo": false,
+        "dataCriacao": "2016-12-03T03:29:39 +02:00"
+    },
+    {
+        "id": "62940874618c3414d5ac4735",
+        "nome": "Kay",
+        "sobrenome": "Daniel",
+        "email": "kaydaniel@flum.com",
+        "idade": 39,
+        "ativo": false,
+        "dataCriacao": "2015-05-09T12:39:59 +03:00"
+    },
+    {
+        "id": "629408746ea30267e4ae99e2",
+        "nome": "Holloway",
+        "sobrenome": "Walter",
+        "email": "hollowaywalter@flum.com",
+        "idade": 23,
+        "ativo": false,
+        "dataCriacao": "2016-05-02T11:02:56 +03:00"
+    },
+    {
+        "id": "6294087420a48a3133eac1a8",
+        "nome": "Nadine",
+        "sobrenome": "Walls",
+        "email": "nadinewalls@flum.com",
+        "idade": 21,
+        "ativo": true,
+        "dataCriacao": "2016-08-07T05:26:17 +03:00"
+    },
+    {
+        "id": "6294087447d1ce92bac21bde",
+        "nome": "Rowland",
+        "sobrenome": "Pitts",
+        "email": "rowlandpitts@flum.com",
+        "idade": 39,
+        "ativo": true,
+        "dataCriacao": "2016-01-16T03:52:50 +02:00"
+    }
+]
