@@ -3,11 +3,18 @@ package main
 import (
 	"github.com/anagiorgiani/BootcampGo/modulo03-goWeb/go-web/arquitetura/cmd/server/handler"
 	"github.com/anagiorgiani/BootcampGo/modulo03-goWeb/go-web/arquitetura/internal/users"
+	"github.com/anagiorgiani/BootcampGo/modulo03-goWeb/go-web/arquitetura/pkg/store"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
-	repo := users.NewRepository()
+	_ = godotenv.Load()
+
+	db := store.New(store.FileType, "./users.json")
+
+	repo := users.NewRepository(db)
+
 	service := users.NewService(repo)
 	u := handler.NewUser(service)
 

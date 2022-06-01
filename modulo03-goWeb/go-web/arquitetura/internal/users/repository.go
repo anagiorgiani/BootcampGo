@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strings"
 	"time"
+
+	"github.com/anagiorgiani/BootcampGo/modulo03-goWeb/go-web/arquitetura/pkg/store"
 )
 
 type User struct {
@@ -30,15 +32,23 @@ type Repository interface {
 	DeleteUser(id int) error
 }
 
-type repository struct{}
+type repository struct {
+	db store.Store
+}
 
-func NewRepository() Repository {
-	return &repository{}
+func NewRepository(db store.Store) Repository {
+
+	return &repository{
+		db: db,
+	}
 }
 
 func (r *repository) GetAll() ([]User, error) {
 
-	return userEnt, nil
+	var ulist []User
+	r.db.Read(&ulist)
+
+	return ulist, nil
 }
 
 func (r *repository) Get(id int) (User, error) {
@@ -51,19 +61,31 @@ func (r *repository) Get(id int) (User, error) {
 }
 
 func (r *repository) getNextId() int {
-	if len(userEnt) == 0 {
+	var ulist []User
+
+	if err := r.db.Read(&ulist); err != nil {
 		return 1
 	}
-	codInt := userEnt[len(userEnt)-1].Id
 
-	return codInt + 1
+	if len(ulist) == 0 {
+		return 1
+	}
+
+	return ulist[len(ulist)-1].Id + 1
 }
 
 func (r *repository) CreateUser(Id int, Nome string, Sobrenome string, Email string, Idade int, Ativo bool) (User, error) {
 
 	u := User{Id, Nome, Sobrenome, Email, Idade, Ativo, time.Now().Format("2006-01-02 15:04:05")}
 
-	userEnt = append(userEnt, u)
+	var ulist []User
+	r.db.Read(&ulist)
+
+	ulist = append(ulist, u)
+
+	if err := r.db.Write(ulist); err != nil {
+		return User{}, err
+	}
 
 	return u, nil
 }

@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 type User struct {
@@ -26,6 +27,9 @@ type User struct {
 var usersCreate = []User{}
 
 func main() {
+
+	_ = godotenv.Load()
+
 	router := gin.Default()
 	router.POST("/users/create", CreateUser)
 	router.GET("/users", Get)
@@ -121,8 +125,9 @@ func getNextId() int {
 }
 
 func validateToken(c *gin.Context) bool {
+	fmt.Println("Token do ENV: ", os.Getenv("TOKEN"))
 	token := c.GetHeader("token")
-	if token != "1234" {
+	if token != os.Getenv("TOKEN") {
 		return false
 	}
 	return true
