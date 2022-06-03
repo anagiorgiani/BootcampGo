@@ -44,6 +44,16 @@ func (u *User) FilterUsers(c *gin.Context) {
 	c.JSON(http.StatusOK, web.NewResponse(http.StatusOK, userFiltered, ""))
 }
 
+// StoreUsers godoc
+// @Sumary Store Users
+// @Tags Users
+// @Description Store Users
+// @Accept json
+// @Produce json
+// @Param token header string true "token"
+// @Param user body request true "User to store"
+// @Sucess 200 {object} web.Response
+// @Router /users [get]
 func (u *User) Get(c *gin.Context) {
 
 	if c.Query("id") != "" {
@@ -74,6 +84,16 @@ func (u *User) Get(c *gin.Context) {
 
 }
 
+// StoreUsers godoc
+// @Sumary Store Users
+// @Tags Users
+// @Description Store Users
+// @Accept json
+// @Produce json
+// @Param token header string true "token"
+// @Param user body request true "User to store"
+// @Sucess 200 {object} web.Response
+// @Router /users [post]
 func (u *User) CreateUser(c *gin.Context) {
 
 	if validateToken(c) == false {

@@ -1,0 +1,107 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/users": {
+            "get": {
+                "description": "Store Users",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "User to store",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handler.request"
+                        }
+                    }
+                ],
+                "responses": {}
+            },
+            "post": {
+                "description": "Store Users",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "User to store",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handler.request"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    },
+    "definitions": {
+        "handler.request": {
+            "type": "object",
+            "required": [
+                "ativo",
+                "email",
+                "idade",
+                "nome",
+                "sobrenome"
+            ],
+            "properties": {
+                "ativo": {
+                    "type": "boolean"
+                },
+                "dataCriacao": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "idade": {
+                    "type": "integer"
+                },
+                "nome": {
+                    "type": "string"
+                },
+                "sobrenome": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

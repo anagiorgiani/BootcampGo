@@ -1,0 +1,71 @@
+definitions:
+  handler.request:
+    properties:
+      ativo:
+        type: boolean
+      dataCriacao:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      idade:
+        type: integer
+      nome:
+        type: string
+      sobrenome:
+        type: string
+    required:
+    - ativo
+    - email
+    - idade
+    - nome
+    - sobrenome
+    type: object
+info:
+  contact: {}
+paths:
+  /users:
+    get:
+      consumes:
+      - application/json
+      description: Store Users
+      parameters:
+      - description: token
+        in: header
+        name: token
+        required: true
+        type: string
+      - description: User to store
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/handler.request'
+      produces:
+      - application/json
+      responses: {}
+      tags:
+      - Users
+    post:
+      consumes:
+      - application/json
+      description: Store Users
+      parameters:
+      - description: token
+        in: header
+        name: token
+        required: true
+        type: string
+      - description: User to store
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/handler.request'
+      produces:
+      - application/json
+      responses: {}
+      tags:
+      - Users
+swagger: "2.0"
